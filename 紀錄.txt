@@ -1,0 +1,10 @@
+https://script.google.com/macros/s/AKfycby03JY5arbJyy0tOE2YuqdIMxX072zgsmLHmPUOclGsUNjqIvv6PzmIw9U9GMNB6A/exec
+
+AKfycby03JY5arbJyy0tOE2YuqdIMxX072zgsmLHmPUOclGsUNjqIvv6PzmIw9U9GMNB6A
+
+javascript
+LIFF 應用程式
+爬蟲圖片
+後台
+後台接給api，可以選擇要當成prompt的圖片，也可以自己加進去(和表單差不多)
+ai api或是fine tune

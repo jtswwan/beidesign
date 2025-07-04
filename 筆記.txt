@@ -1,0 +1,26 @@
+
+把js看懂
+把line和表單看懂
+思考一下要不要訂閱youtube
+把html和flask的部分看懂
+
+高二數學先開始看了
+高一記得找機會補完
+
+<!-- 加 CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='index_learn.css') }}">
+
+<!-- 加 JS -->
+<script src="{{ url_for('static', filename='index_learn.js') }}"></script>
+
+<!-- 加圖片 -->
+<img src="{{ url_for('static', filename='images/dog.jpg') }}">
+
+
+
+{
+  userId: "Uxxxxxxxxxxxxxx",
+  displayName: "小明",
+  pictureUrl: "https://profile.line-scdn.net/xxx.jpg",
+  statusMessage: "今天心情很好"
+}

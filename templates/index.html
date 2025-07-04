@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <title>貝設計</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='index_learn.css') }}">
+</head>
+
+<body>
+  <div class="slide active" id="slide1">
+    <h1>貝設計</h1>
+    <label for="usage">使用場景：</label>
+    <select id="usage" onchange="toggleOtherUsage()">
+      <option value="品牌頭像">品牌頭像</option>
+      <option value="名片設計">名片設計</option>
+      <option value="IG/社群">IG / 社群</option>
+      <option value="廣告／美編設計">廣告／美編設計</option>
+      <option value="DM 設計">DM 設計</option>
+      <option value="菜單設計">菜單設計</option>
+      <option value="海報設計">海報設計</option>
+      <option value="其他">其他</option>
+    </select>
+    <input type="text" id="otherUsage" placeholder="請說明其他用途" style="display:none; margin-top: 0.5rem;">
+    <div class="button-group">
+      <span></span>
+      <button onclick="nextSlide()">下一步</button>
+    </div>
+  </div>
+
+  <div class="slide" id="slide2">
+    <label for="brand">品牌名稱：</label>
+    <input type="text" id="brand"/>
+
+    <label for="description">簡介或服務內容：</label>
+    <textarea id="description" rows="4"></textarea>
+
+    <div class="button-group">
+      <button onclick="prevSlide()">上一步</button>
+      <button onclick="nextSlide()">下一步</button>
+    </div>
+  </div>
+
+  <div class="slide" id="slide3">
+    <label for="elements">想加入的元素：</label>
+    <textarea id="elements" rows="3" placeholder="例如：貓、山、圓形圖騰..."></textarea>
+    <div class="button-group">
+      <button onclick="prevSlide()">上一步</button>
+      <button onclick="nextSlide()">下一步</button>
+    </div>
+  </div>
+
+  <div class="slide" id="slide4">
+    <label>希望的品牌風格：</label>
+    <div class="filter-buttons">
+      <button onclick="filterImages('all')">全部</button>
+      {% for category in categories %}
+        <button onclick="filterImages('{{ category }}')">{{ category }}</button>
+      {% endfor %}  
+    </div>
+
+    <div class="image-container">
+      {% for category, images in categories.items() %}
+        {% for img in images %}
+          <img src="{{ img }}" class="image {{ category }}" onclick="selectImage(this)">
+        {% endfor %}
+      {% endfor %}
+    </div>
+
+    <div class="button-group">
+      <button onclick="prevSlide()">上一步</button>
+      <button onclick="submitForm()">完成送出</button>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='index_learn.js') }}"></script>
+</body>
+
+</html>
