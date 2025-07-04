@@ -43,5 +43,35 @@ def submit_form():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
 
+
+
+
+
+@app.route('/debug-gas', methods=['GET'])
+def debug_gas():
+    test_data = {
+        "userId": "debug_id",
+        "line_name": "debug_user",
+        "usage": "測試場景",
+        "brand": "測試品牌",
+        "description": "這是測試用描述",
+        "elements": "測試元素",
+        "likedImages": ["科技風/1.jpg", "可愛風/2.jpg"]
+    }
+    GAS_URL = "https://script.google.com/macros/s/AKfycbyMTQkS_YmuFBQkA1Q_jKW25w87XmciYeTV2XdnB2gtVpBSjKaWmaKIhVFYgptJaaAjxQ/exec"
+    try:
+        res = requests.post(GAS_URL, json=test_data)
+        return jsonify({"status": "sent", "response": res.text})
+    except Exception as e:
+        return jsonify({"status": "fail", "message": str(e)})
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
