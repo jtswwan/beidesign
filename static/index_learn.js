@@ -90,14 +90,24 @@ async function submitForm() {
       "likedImages": paths
     };
 
-    try {
-      await fetch("https://script.google.com/macros/s/AKfycby03JY5arbJyy0tOE2YuqdIMxX072zgsmLHmPUOclGsUNjqIvv6PzmIw9U9GMNB6A/exec", {
-        method: "POST",
-        body: JSON.stringify(result),
-        headers: {
-            "Content-Type": "application/json"
-        },
-      });
+  try {
+    const res = await fetch("/submit-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(result),
+    });
+
+    const json = await res.json();
+    if (json.status === "success") {
+      alert("成功送出！");
+    } else {
+      alert("送出失敗：" + json.message);
+    }
+  } catch (err) {
+    alert("錯誤：" + err.message);
+  }
 
       //user發送訊息
       await liff.sendMessages([{
@@ -107,10 +117,6 @@ async function submitForm() {
 
       //結束 LIFF
       liff.closeWindow();
-
-    } catch (err) {
-      alert("送出失敗：" + err.message);
-    }
 }
 
 function filterImages(category) {
