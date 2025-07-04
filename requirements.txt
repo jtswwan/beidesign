@@ -1,6 +1,8 @@
 ﻿aiohappyeyeballs==2.6.1
 gunicorn
 aiohttp==3.11.13
+flask==2.3.3
+
 aiosignal==1.3.2
 attrs==25.1.0
 beautifulsoup4==4.13.3
