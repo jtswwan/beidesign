@@ -28,7 +28,7 @@ def index():
             img_path = url_for('static', filename=f"圖片/{category}/{img}")
             images.append(img_path)
         categories[category] = images
-    return render_template("index_learn.html", categories=categories)
+    return render_template("index.html", categories=categories)
 
 
 
