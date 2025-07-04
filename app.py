@@ -2,12 +2,13 @@ from flask import Flask, render_template, url_for
 import os
 from flask import request, jsonify
 import requests
+from flask_cors import CORS
 
-base_path = "static/圖片"
-# base_path = "幸福more/test/static/圖片"
+
+base_path = os.path.join(app.static_folder, "圖片")
 
 app = Flask(__name__, static_folder='static')
-
+CORS(app)
 
 @app.route("/")
 def index():
@@ -16,7 +17,7 @@ def index():
     for category in os.listdir(base_path):
         print(os.listdir(base_path))
         #category = 每個類別
-        category_path = base_path+"/"+category
+        category_path = os.path.join(base_path, category)
         if not os.path.isdir(category_path):
             #還有os.path.isfile()和os.path.exists()
             continue
@@ -30,7 +31,16 @@ def index():
         categories[category] = images
     return render_template("index.html", categories=categories)
 
-
+@app.route('/submit-form', methods=['POST'])
+def submit_form():
+    data = request.json
+    GAS_URL = "https://script.google.com/macros/s/AKfycby03JY5arbJyy0tOE2YuqdIMxX072zgsmLHmPUOclGsUNjqIvv6PzmIw9U9GMNB6A/exec"
+    
+    try:
+        res = requests.post(GAS_URL, json=data)
+        return jsonify({"status": "success", "gas_result": res.text})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
 
 if __name__ == "__main__":
     app.run(debug=True)
