@@ -5,10 +5,11 @@ import requests
 from flask_cors import CORS
 
 
-base_path = os.path.join(app.static_folder, "圖片")
+
 
 app = Flask(__name__, static_folder='static')
 CORS(app)
+base_path = os.path.join(app.static_folder, "圖片")
 
 @app.route("/")
 def index():
