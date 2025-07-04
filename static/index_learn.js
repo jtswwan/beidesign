@@ -1,5 +1,5 @@
 let userId = "";
-let name = "";
+let lineName = "";
 
 //liff
 window.onload = async function () {
