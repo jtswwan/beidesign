@@ -35,7 +35,7 @@ def index():
 @app.route('/submit-form', methods=['POST'])
 def submit_form():
     data = request.json
-    GAS_URL = "https://script.google.com/macros/s/AKfycbx3taqFrlcjTd1JYFVy5A5s8puSPvp8yGttLoF36cYHmsLgJK7Qnmln1OFUgB3A-0UoNw/exec"
+    GAS_URL = "https://script.google.com/macros/s/AKfycbwWuTYafPXC_vK7ZCzb8L7oN2HrxI2bIgzFMqV5DDr3ooVXFabrqkf2VUTc70jR8zhS/exec"
     
     try:
         res = requests.post(GAS_URL, json=data)
