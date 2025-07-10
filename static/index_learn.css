@@ -125,35 +125,23 @@ button:active {
 }
 
 
-
-
 /* 橫向滑動樣式 */
 .filter-buttons {
   display: flex;
-  overflow-x: auto;
+  overflow-x: auto;           /* 允許橫向滾動 */
   gap: 0.6rem;
   padding: 0.5rem 0.5rem;
   margin: 1rem 0;
-  scroll-behavior: smooth;
+  scrollbar-width: block;      /* Firefox 隱藏捲軸 */
 }
 
-/* 顯示美美的 scrollbar */
 .filter-buttons::-webkit-scrollbar {
-  height: 6px; /* scrollbar 高度 */
-}
-
-.filter-buttons::-webkit-scrollbar-thumb {
-  background-color: rgba(98, 210, 255, 0.6); /* 藍藍可愛色 */
-  border-radius: 999px;
-}
-
-.filter-buttons::-webkit-scrollbar-track {
-  background: transparent;
+  display: block;              /* Chrome / Safari 隱藏捲軸 */
 }
 
 /* 按鈕風格（可自訂可愛風） */
 .filter-buttons button {
-  flex: 0 0 auto;
+  flex: 0 0 auto;             /* 不換行、不自動縮放 */
   background-color: #fff;
   color: #555;
   border: 1.5px solid #ccc;
@@ -179,6 +167,9 @@ button:active {
   color: white;
   border-color: #62d2ff;
 }
+
+
+
 
 /* ======= 響應式調整 ======= */
 @media (max-width: 480px) {
