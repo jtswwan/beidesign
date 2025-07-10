@@ -125,47 +125,32 @@ button:active {
 }
 
 
-/* 橫向滑動樣式 */
+
+
+
 .filter-buttons {
   display: flex;
-  overflow-x: auto;           /* 允許橫向滾動 */
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 0.6rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
   margin: 1rem 0;
-  scrollbar-width: block;      /* Firefox 隱藏捲軸 */
+  scroll-behavior: smooth;
+  scrollbar-width: auto;  /* ✅ Firefox 顯示捲軸 */
 }
 
+/* ✅ 顯示 Chrome/Safari 的橫向 scrollbar */
 .filter-buttons::-webkit-scrollbar {
-  display: block;              /* Chrome / Safari 隱藏捲軸 */
+  height: 6px;
 }
 
-/* 按鈕風格（可自訂可愛風） */
-.filter-buttons button {
-  flex: 0 0 auto;             /* 不換行、不自動縮放 */
-  background-color: #fff;
-  color: #555;
-  border: 1.5px solid #ccc;
+.filter-buttons::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 999px;
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: 500;
-  white-space: nowrap;
-  background: linear-gradient(135deg, #f6dfff, #d0f2ff);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.filter-buttons button:hover {
-  background: #62d2ff;
-  color: white;
-  border-color: #62d2ff;
-}
-
-.filter-buttons button.selected {
-  background: #62d2ff;
-  color: white;
-  border-color: #62d2ff;
+.filter-buttons::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 
