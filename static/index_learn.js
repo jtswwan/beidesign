@@ -137,3 +137,25 @@ function selectImage(img) {
     img.classList.add('selected');
   }
 }
+
+
+
+function filterImages(category) {
+  // 清除所有選中狀態
+  const buttons = document.querySelectorAll('.filter-buttons button');
+  buttons.forEach(btn => btn.classList.remove('selected'));
+
+  // 設定選中的按鈕
+  event.target.classList.add('selected');
+
+  // 顯示或隱藏圖片
+  const allImages = document.querySelectorAll('.image');
+  allImages.forEach(img => {
+    if (category === 'all' || img.classList.contains(category)) {
+      img.style.display = '';
+    } else {
+      img.style.display = 'none';
+    }
+  });
+}
+
